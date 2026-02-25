@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "com.brandonitaly.worldtemplates.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "SelectWorldScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

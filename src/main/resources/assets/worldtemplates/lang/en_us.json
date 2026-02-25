@@ -1,0 +1,7 @@
+{
+  "worldtemplates.selectWorldTemplate": "World Templates",
+  "worldtemplates.screen.select_template": "Select World Template",
+  "worldtemplates.screen.resourcePacks": "Resource Packs",
+  "worldtemplates.status.downloading": "Downloading...",
+  "worldtemplates.status.failed": "Failed!"
+}
