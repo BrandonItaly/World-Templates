@@ -2,7 +2,6 @@ package com.brandonitaly.worldtemplates.client;
 
 import com.google.gson.JsonParser;
 import com.mojang.serialization.JsonOps;
-import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
@@ -13,17 +12,23 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorldTemplateManager implements ResourceManagerReloadListener, IdentifiableResourceReloadListener {
+//? if fabric {
+import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
+//?}
+
+public class WorldTemplateManager implements ResourceManagerReloadListener /*? if fabric {*/ , IdentifiableResourceReloadListener /*?}*/ {
     private static final Logger LOGGER = LoggerFactory.getLogger("worldtemplates");
     
     public static final List<WorldTemplate> TEMPLATES = new ArrayList<>();
     
+    //? if fabric {
     private static final Identifier ID = Identifier.fromNamespaceAndPath("worldtemplates", "world_template_listener");
 
     @Override
     public Identifier getFabricId() {
         return ID;
     }
+    //?}
 
     @Override
     public void onResourceManagerReload(ResourceManager resourceManager) {

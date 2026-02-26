@@ -98,13 +98,17 @@ public class TemplateDownloader {
 
     private static void extractZip(Path zipFile, Path targetDir) throws IOException {
         Files.createDirectories(targetDir);
+        
+        // Convert the target directory to an absolute path first
+        Path absoluteTargetDir = targetDir.toAbsolutePath().normalize();
+
         try (ZipInputStream zis = new ZipInputStream(Files.newInputStream(zipFile))) {
             ZipEntry zipEntry = zis.getNextEntry();
             while (zipEntry != null) {
-                Path newFile = targetDir.resolve(zipEntry.getName()).normalize();
+                // Resolve against the absolute target dir
+                Path newFile = absoluteTargetDir.resolve(zipEntry.getName()).normalize();
                 
-                // Security check
-                if (!newFile.startsWith(targetDir)) {
+                if (!newFile.startsWith(absoluteTargetDir)) {
                     throw new IOException("Bad zip entry: " + zipEntry.getName());
                 }
                 
