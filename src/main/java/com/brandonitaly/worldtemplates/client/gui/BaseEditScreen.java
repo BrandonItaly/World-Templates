@@ -247,7 +247,7 @@ public abstract class BaseEditScreen extends Screen {
             helper.addChild(CommonLayouts.labeledElement(BaseEditScreen.this.font, nameEdit, Component.translatable("selectWorld.enterName")), helper.newCellSettings().alignHorizontallyCenter());
 
             helper.addChild(CycleButton.<GameType>builder(GameType::getShortDisplayName, BaseEditScreen.this.gameMode)
-                .withValues(GameType.SURVIVAL, GameType.CREATIVE, GameType.ADVENTURE)
+                .withValues(GameType.SURVIVAL, GameType.CREATIVE, GameType.ADVENTURE, GameType.SPECTATOR)
                 .withTooltip(value -> Tooltip.create(Component.translatable("selectWorld.gameMode." + value.getName() + ".info")))
                 .create(0, 0, 210, 20, Component.translatable("selectWorld.gameMode"), (btn, val) -> BaseEditScreen.this.gameMode = val), buttonSettings);
 
