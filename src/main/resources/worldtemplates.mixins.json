@@ -3,7 +3,9 @@
   "package": "com.brandonitaly.worldtemplates.mixins",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "SelectWorldScreenMixin"
+    "SelectWorldScreenMixin",
+    "WorldOpenFlowsMixin",
+    "WorldListEntryMixin"
   ],
   "injectors": {
     "defaultRequire": 1
