@@ -94,7 +94,8 @@ public abstract class BaseEditScreen extends Screen {
     @Override
     public void repositionElements() {
         if (this.tabNavigationBar != null) {
-            this.tabNavigationBar.setWidth(this.width);
+            //~ if >26.0 '.setWidth' -> '.updateWidth' {
+            this.tabNavigationBar.setWidth(width);//~}
             this.tabNavigationBar.arrangeElements();
             int tabAreaTop = this.tabNavigationBar.getRectangle().bottom();
             ScreenRectangle tabArea = new ScreenRectangle(0, tabAreaTop, this.width, this.height - this.layout.getFooterHeight() - tabAreaTop);
@@ -219,11 +220,11 @@ public abstract class BaseEditScreen extends Screen {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        super.render(graphics, mouseX, mouseY, partialTick);
+        //~ if >26.0 '.render' -> '.extractRenderState' {
+        super.render(graphics, mouseX, mouseY, partialTick);//~}
         graphics.blit(RenderPipelines.GUI_TEXTURED, Screen.FOOTER_SEPARATOR, 0, this.height - this.layout.getFooterHeight() - 2, 0.0F, 0.0F, this.width, 2, 32, 2);
     }
 
-    @Override
     protected void renderMenuBackground(GuiGraphics graphics) {
         graphics.blit(RenderPipelines.GUI_TEXTURED, CreateWorldScreen.TAB_HEADER_BACKGROUND, 0, 0, 0.0F, 0.0F, this.width, this.layout.getHeaderHeight(), 16, 16);
         this.renderMenuBackground(graphics, 0, this.layout.getHeaderHeight(), this.width, this.height);

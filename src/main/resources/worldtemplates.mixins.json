@@ -2,10 +2,12 @@
   "required": true,
   "package": "com.brandonitaly.worldtemplates.mixins",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [
+  "client": [
     "SelectWorldScreenMixin",
     "WorldOpenFlowsMixin",
     "WorldListEntryMixin"
+  ],
+  "mixins": [
   ],
   "injectors": {
     "defaultRequire": 1

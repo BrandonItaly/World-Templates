@@ -25,10 +25,18 @@ import java.util.function.Consumer;
 public abstract class SelectWorldScreenMixin extends Screen {
 
     @Shadow private HeaderAndFooterLayout layout;
-    @Shadow private Button selectButton;
-    @Shadow private Button renameButton;
+    
+    @Shadow(aliases = {"selectButton"}) 
+    private Button playWorldButton;
+    
+    @Shadow(aliases = {"renameButton"}) 
+    private Button editButton;
+    
     @Shadow private Button deleteButton;
-    @Shadow private Button copyButton;
+    
+    @Shadow(aliases = {"copyButton"}) 
+    private Button recreateButton;
+    
     @Shadow protected Screen lastScreen;
 
     protected SelectWorldScreenMixin(Component title) { 
@@ -48,7 +56,7 @@ public abstract class SelectWorldScreenMixin extends Screen {
         RowHelper rowHelper = footer.createRowHelper(12);
 
         // ROW 1 (3 Buttons, Span 4 columns each)
-        this.selectButton = rowHelper.addChild(
+        this.playWorldButton = rowHelper.addChild(
             Button.builder(LevelSummary.PLAY_WORLD, button -> list.getSelectedOpt().ifPresent(joinWorld)).width(120).build(), 4
         );
         rowHelper.addChild(
@@ -60,13 +68,13 @@ public abstract class SelectWorldScreenMixin extends Screen {
         );
 
         // ROW 2 (4 Buttons, Span 3 columns each)
-        this.renameButton = rowHelper.addChild(
+        this.editButton = rowHelper.addChild(
             Button.builder(Component.translatable("selectWorld.edit"), button -> list.getSelectedOpt().ifPresent(WorldListEntry::editWorld)).width(88).build(), 3
         );
         this.deleteButton = rowHelper.addChild(
             Button.builder(Component.translatable("selectWorld.delete"), button -> list.getSelectedOpt().ifPresent(WorldListEntry::deleteWorld)).width(88).build(), 3
         );
-        this.copyButton = rowHelper.addChild(
+        this.recreateButton = rowHelper.addChild(
             Button.builder(Component.translatable("selectWorld.recreate"), button -> list.getSelectedOpt().ifPresent(WorldListEntry::recreateWorld)).width(88).build(), 3
         );
         rowHelper.addChild(
